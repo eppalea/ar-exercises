@@ -23,7 +23,8 @@ class Store < ActiveRecord::Base
   validates :annual_revenue, numericality: { greater_than_or_equal_to: 0 }
 end
 
-def request_store
-  puts "Please provide me with a store name."
-  @reply = gets.chomp.to_s
-end
+puts "Please provide me with a store name."
+@reply = gets.chomp.to_s
+
+store_request = Store.create(name: @reply)
+puts store_request.errors.full_messages
